@@ -51,7 +51,17 @@ $(document).ready(function() {
 			  type: 'POST',
 			  url: 'https://api.mailgun.net/v2/samples.mailgun.org/messages',
 			  data: data,
-			  success: function(data,status,jqhxr){
+			  success: function(data,status,jqxhr){
+			  	 $('#contact-form button').html('<i class="fa fa-check"></i>'+okMessage);
+					setTimeout(function(){
+						$('#contact-form button').html(buttonCopy);
+						$('#contact-form button').width('auto');
+					},
+					2000
+				   );
+			  },
+			  error: function(jqxhr, status, error){
+			  	alert(error);
 			  	 $('#contact-form button').html('<i class="fa fa-check"></i>'+okMessage);
 					setTimeout(function(){
 						$('#contact-form button').html(buttonCopy);
