@@ -41,7 +41,7 @@ $(document).ready(function() {
 			var formInput = $(this).serialize();
 
 			var data = {
-			 from: $('#contact-name').val() + '<' + $('#contact-mail').val() + '>',
+			 from: $('#contact-name').val() + ' <' + $('#contact-mail').val() + '>',
 			 to: 'camiloaguilar11@gmail.com',
 			 subject: 'Message from website',
 			 text: $('#contact-message').val()
