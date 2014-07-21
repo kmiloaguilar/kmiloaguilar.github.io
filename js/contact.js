@@ -1,4 +1,10 @@
 $(document).ready(function() {
+
+	function make_base_auth(user, password) {
+	  
+	  return "Basic " + hash;
+	}
+
 	$('#contact-form').submit(function() {
 		var buttonWidth=$('#contact-form button').width();
 		
@@ -71,7 +77,9 @@ $(document).ready(function() {
 				   );
 			  },
 			  beforeSend: function (xhr) {
-		         xhr.setRequestHeader ("Authorization", "Basic api:key-2ent988441dwc-6ksqcggzzc0wmtuok0");
+			  	var tok = 'api:key-2ent988441dwc-6ksqcggzzc0wmtuok0';
+	  			var hash = Base64.encode(tok);
+		         xhr.setRequestHeader ("Authorization", "Basic "+hash);
 			  },
 			  dataType: 'json'
 			});
