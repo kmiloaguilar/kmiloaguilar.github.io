@@ -6,6 +6,9 @@ $(document).ready(function() {
 	}
 
 	$('#contact-form').submit(function() {
+
+		
+
 		var buttonWidth=$('#contact-form button').width();
 		
 		var buttonCopy = $('#contact-form button').html(),
@@ -44,7 +47,7 @@ $(document).ready(function() {
 		else {
 			$('#contact-form button').html('<i class="fa fa-spinner fa-spin"></i>'+sendingMessage);
 			
-			var formInput = $(this).serialize();
+			
 
 			var data = {
 			 from: $('#contact-name').val() + ' <' + $('#contact-mail').val() + '>',
@@ -65,6 +68,7 @@ $(document).ready(function() {
 					},
 					2000
 				   );
+					return;
 			  },
 			  error: function(jqxhr, status, error){
 			  	alert(error);
@@ -75,6 +79,7 @@ $(document).ready(function() {
 					},
 					2000
 				   );
+				   return;
 			  },
 			  beforeSend: function (xhr) {
 			  	var tok = 'api:key-2ent988441dwc-6ksqcggzzc0wmtuok0';
