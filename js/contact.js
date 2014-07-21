@@ -40,10 +40,17 @@ $(document).ready(function() {
 			
 			var formInput = $(this).serialize();
 
+			var data = {
+			 from: $('#contact-name').val() + '<' + $('#contact-mail').val() + '>',
+			 to: 'camiloaguilar11@gmail.com',
+			 subject: 'Message from website',
+			 text: $('#contact-message').val()
+			}
+
 			$.ajax({
 			  type: 'POST',
 			  url: 'https://api.mailgun.net/v2/samples.mailgun.org/messages',
-			  data: formInput,
+			  data: data,
 			  success: function(data,status,jqhxr){
 			  	 $('#contact-form button').html('<i class="fa fa-check"></i>'+okMessage);
 					setTimeout(function(){
