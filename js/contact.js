@@ -39,14 +39,34 @@ $(document).ready(function() {
 			$('#contact-form button').html('<i class="fa fa-spinner fa-spin"></i>'+sendingMessage);
 			
 			var formInput = $(this).serialize();
-			$.post($(this).attr('action'),formInput, function(data){
-				$('#contact-form button').html('<i class="fa fa-check"></i>'+okMessage);
-				setTimeout(function(){
-					$('#contact-form button').html(buttonCopy);
-					$('#contact-form button').width('auto');
-				},2000);
-				
+
+			$.ajax({
+			  type: 'POST',
+			  url: 'https://api.mailgun.net/v2/samples.mailgun.org/messages',
+			  data: formInput,
+			  success: function(data,status,jqhxr){
+			  	 $('#contact-form button').html('<i class="fa fa-check"></i>'+okMessage);
+					setTimeout(function(){
+						$('#contact-form button').html(buttonCopy);
+						$('#contact-form button').width('auto');
+					},
+					2000
+				   );
+			  },
+			  beforeSend: function (xhr) {
+		         xhr.setRequestHeader ("Authorization", "Basic api:key-2ent988441dwc-6ksqcggzzc0wmtuok0");
+			  },
+			  dataType: 'json'
 			});
+
+			// $.post($(this).attr('action'),formInput, function(data){
+			// 	$('#contact-form button').html('<i class="fa fa-check"></i>'+okMessage);
+			// 	setTimeout(function(){
+			// 		$('#contact-form button').html(buttonCopy);
+			// 		$('#contact-form button').width('auto');
+			// 	},2000);
+				
+			// });
 		}
 		
 		return false;	
