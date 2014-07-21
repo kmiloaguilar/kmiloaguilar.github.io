@@ -1,10 +1,5 @@
 $(document).ready(function() {
 
-	function make_base_auth(user, password) {
-	  
-	  return "Basic " + hash;
-	}
-
 	$('#contact-form').submit(function() {
 
 		
@@ -68,18 +63,17 @@ $(document).ready(function() {
 					},
 					2000
 				   );
-					return;
+				  return;
 			  },
 			  error: function(jqxhr, status, error){
-			  	alert(error);
-			  	 $('#contact-form button').html('<i class="fa fa-check"></i>'+okMessage);
+			  	 $('#contact-form button').html('<i class="fa fa-check"></i>'+errorMessage);
 					setTimeout(function(){
 						$('#contact-form button').html(buttonCopy);
 						$('#contact-form button').width('auto');
 					},
 					2000
 				   );
-				   return;
+				 return;
 			  },
 			  beforeSend: function (xhr) {
 			  	var tok = 'api:key-2ent988441dwc-6ksqcggzzc0wmtuok0';
