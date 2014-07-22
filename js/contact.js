@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$('#contact-form').submit(function() {
+	$('#btnSend').click(function() {
 
 		
 
