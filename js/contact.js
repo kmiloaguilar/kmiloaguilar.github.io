@@ -77,7 +77,7 @@ $(document).ready(function() {
 			  },
 			  beforeSend: function (xhr) {
 			  	var tok = 'api:key-2ent988441dwc-6ksqcggzzc0wmtuok0';
-	  			var hash = Base64.encode(tok);
+	  			var hash = btoa(tok);
 		         xhr.setRequestHeader ("Authorization", "Basic "+hash);
 			  },
 			  dataType: 'json'
