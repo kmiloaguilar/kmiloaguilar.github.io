@@ -1,9 +1,5 @@
 $(document).ready(function() {
-
-	$('#btnSend').click(function() {
-
-		
-
+	$('#contact-form').submit(function() {
 		var buttonWidth=$('#contact-form button').width();
 		
 		var buttonCopy = $('#contact-form button').html(),
@@ -42,55 +38,18 @@ $(document).ready(function() {
 		else {
 			$('#contact-form button').html('<i class="fa fa-spinner fa-spin"></i>'+sendingMessage);
 			
-			
-
-			var data = {
-			 from: $('#contact-name').val() + ' <' + $('#contact-mail').val() + '>',
-			 to: 'camiloaguilar11@gmail.com',
-			 subject: 'Message from website',
-			 text: $('#contact-message').val()
-			}
-
-			$.ajax({
-			  type: 'POST',
-			  url: 'https://api.mailgun.net/v2/samples.mailgun.org/messages',
-			  data: data,
-			  success: function(data,status,jqxhr){
-			  	 $('#contact-form button').html('<i class="fa fa-check"></i>'+okMessage);
-					setTimeout(function(){
-						$('#contact-form button').html(buttonCopy);
-						$('#contact-form button').width('auto');
-					},
-					2000
-				   );
-				  return;
-			  },
-			  error: function(jqxhr, status, error){
-			  	 $('#contact-form button').html('<i class="fa fa-check"></i>'+errorMessage);
-					setTimeout(function(){
-						$('#contact-form button').html(buttonCopy);
-						$('#contact-form button').width('auto');
-					},
-					2000
-				   );
-				 return;
-			  },
-			  beforeSend: function (xhr) {
-			  	var tok = 'api:key-2ent988441dwc-6ksqcggzzc0wmtuok0';
-	  			var hash = btoa(tok);
-		         xhr.setRequestHeader ("Authorization", "Basic "+hash);
-			  },
-			  dataType: 'json'
-			});
-
-			// $.post($(this).attr('action'),formInput, function(data){
-			// 	$('#contact-form button').html('<i class="fa fa-check"></i>'+okMessage);
-			// 	setTimeout(function(){
-			// 		$('#contact-form button').html(buttonCopy);
-			// 		$('#contact-form button').width('auto');
-			// 	},2000);
+			var formInput = $(this).serialize();
+			$.post($(this).attr('action'),formInput, function(data){
+				$('#contact-form button').html('<i class="fa fa-check"></i>'+okMessage);
 				
-			// });
+				$('#contact-form')[0].reset();
+				
+				setTimeout(function(){
+					$('#contact-form button').html(buttonCopy);
+					$('#contact-form button').width('auto');
+				},2000);
+				
+			});
 		}
 		
 		return false;	

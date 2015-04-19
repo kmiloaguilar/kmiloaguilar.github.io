@@ -171,7 +171,7 @@ $(document).ready(function() {
 					}
 				});
 			},1000);
-		}).modal();
+		}).modal({backdrop:false});
 		
 	});
 
