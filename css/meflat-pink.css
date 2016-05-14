@@ -377,6 +377,28 @@ a:focus,
 	overflow:hidden;
 }
 
+#home{
+    background-color:#F1678D;
+}
+
+.jumbotron.bg-image {
+    position: relative;
+    background:url(../assets/header.jpg) 50% 50% no-repeat;
+    background-size: cover;
+}
+
+.jumbotron.bg-image:before{
+    position: absolute;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: .4;
+}
+
 .jumbotron .text-col{
     margin-top:50px;
 }
